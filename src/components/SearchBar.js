@@ -1,13 +1,17 @@
 // src/components/SearchBar.js
 import React, { useState } from "react";
 
-const SearchBar = ({ onSearch }) => {
-  const [term, setTerm] = useState("");
+const SearchBar = ({ onSearch, onlyUsers }) => {
+  const [searchvalue, setSearchValue] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    fetch(`https://api.github.com/search/repositories?q=${term}`)
+    if (searchvalue === "") return;
+    fetch(
+      `https://api.github.com/search/${
+        onlyUsers ? "users" : "repositories"
+      }?q=${searchvalue}`
+    )
       .then((response) => response.json())
       .then((data) => {
         onSearch(data.items); // Envía los resultados al componente padre
@@ -19,8 +23,10 @@ const SearchBar = ({ onSearch }) => {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        value={term}
-        onChange={(e) => setTerm(e.target.value)}
+        value={searchvalue}
+        onChange={(e) => {
+          setSearchValue(e.target.value);
+        }}
         placeholder="Buscar en GitHub"
       />
       <button type="submit">Buscar</button>

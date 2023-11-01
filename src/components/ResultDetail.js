@@ -1,7 +1,7 @@
 // src/components/ResultDetail.js
 import React from "react";
 
-const ResultDetail = ({ result, onBack }) => {
+const ResultDetail = ({ result, onBack, onlyUsers }) => {
   return (
     <div>
       <h2>{result.name}</h2>
