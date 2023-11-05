@@ -4,7 +4,9 @@ import SearchBar from "./components/SearchBar";
 import ResultList from "./components/ResultList";
 import ResultDetail from "./components/ResultDetail";
 import SearchSwitch from "./components/SearchSwitch";
-
+import "./components/SearchSwitch.css";
+import "./styles/AppStyles.css";
+import "./styles/SearchDiv.css";
 const App = () => {
   const [results, setResults] = useState([]);
   const [selectedResult, setSelectedResult] = useState(null);
@@ -23,8 +25,8 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Búsqueda en GitHub</h1>
+    <div className="app-container">
+      <h1 style={{ marginBottom: "94px" }}>Búsqueda en GitHub</h1>
       {selectedResult ? (
         <ResultDetail
           result={selectedResult}
@@ -33,12 +35,15 @@ const App = () => {
         />
       ) : (
         <>
-          <SearchBar onSearch={handleSearch} onlyUsers={isSerchingUsers} />
-          <ResultList
-            results={results}
-            onResultClick={handleResultClick}
-            onlyUsers={isSerchingUsers}
-          />
+          <div className="search-container">
+            <SearchBar onSearch={handleSearch} onlyUsers={isSerchingUsers} />
+            <ResultList
+              results={results}
+              onResultClick={handleResultClick}
+              onlyUsers={isSerchingUsers}
+            />
+          </div>
+
           <SearchSwitch
             isSearchingUsers={isSerchingUsers}
             onSwitch={switchType}

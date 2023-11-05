@@ -1,0 +1,54 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px; /* Ancho del switch */
+  height: 20px; /* Alto del switch */
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px; /* Tamaño de la perilla del switch */
+  width: 16px; /* Tamaño de la perilla del switch */
+  left: 2px; /* Alineación de la perilla del switch */
+  bottom: 2px; /* Alineación de la perilla del switch */
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%; /* Hace la perilla redondeada */
+}
+
+input:checked + .slider {
+  background-color: #29ac0f;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(
+    20px
+  ); /* Desplaza la perilla al lado derecho cuando está activado */
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
