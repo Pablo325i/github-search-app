@@ -8,9 +8,9 @@ const SearchBar = ({ onSearch, onlyUsers }) => {
     e.preventDefault();
     if (searchvalue === "") return;
     fetch(
-      `https://api.github.com/search/${
-        onlyUsers ? "users" : "repositories"
-      }?q=${searchvalue}`
+      `http://localhost:3000/api/github/${
+        onlyUsers ? "users?name=" : "repos?name="
+      }${searchvalue}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -36,3 +36,7 @@ const SearchBar = ({ onSearch, onlyUsers }) => {
   );
 };
 export default SearchBar;
+
+// `https://api.github.com/search/${
+//         onlyUsers ? "users" : "repositories"
+//       }?q=${searchvalue}`
