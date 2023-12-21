@@ -7,10 +7,10 @@ const QueriesList = ({ queries, onResultClick }) => {
       {queries.map((query) => (
         <li key={query._id} onClick={() => onResultClick(query)}>
           <p>{query._id}</p>
-          <p>{query._searchType}</p>
-          <p>{query._queryOptions}</p>
-          <p>{query._q}</p>
-          <p>{query._date}</p>
+          <p>{query.searchType}</p>
+          {/* <p>{query.queryOptions}</p> */}
+          <p>{query.q}</p>
+          <p>{query.date}</p>
         </li>
       ))}
     </ul>
