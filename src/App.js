@@ -39,7 +39,7 @@ const App = () => {
   };
   useEffect(() => {
     fetchQueries();
-  }, []);
+  }, [results]);
   return (
     <div className="app-container">
       <div style={{ display: "flex", flexDirection: "column" }}>
