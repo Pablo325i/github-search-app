@@ -21,10 +21,29 @@ const App = () => {
   const handleResultClick = (result) => {
     setSelectedResult(result);
   };
-
+  const deleteQuery = (query) => {
+    const filteredQueris = queries.filter((e) => e._id !== query._id);
+    setQueries(filteredQueris);
+    console.log("filtered", filteredQueris);
+    console.log("queries", queries);
+  };
   const handleBack = () => {
     setSelectedResult(null);
   };
+  const deleteSelectedQuery = async (query) => {
+    console.log("SelectedQuery");
+    try {
+      const URL = `http://localhost:3000/api/github/queries/${query._id}`;
+      const response = await fetch(URL, { method: "delete" });
+      if (!response.ok) {
+        throw new Error("no se pudo eliminar");
+      }
+    } catch (error) {
+      console.log("ERROR", error.message);
+    }
+    deleteQuery(query);
+  };
+
   const fetchQueries = async () => {
     try {
       const response = await fetch("http://localhost:3000/api/queries");
@@ -71,9 +90,12 @@ const App = () => {
         )}
       </div>
       <div>
-        <h1>Busqueda Queries</h1>
-        <div className="search-container">
-          <QueriesList queries={queries} />
+        <h1>Historial de Queries</h1>
+        <div style={{ marginTop: "93px" }} className="search-container">
+          <QueriesList
+            queries={queries}
+            deleteSelectedQuery={deleteSelectedQuery}
+          />
         </div>
       </div>
     </div>

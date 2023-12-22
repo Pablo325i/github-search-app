@@ -1,11 +1,11 @@
 import React from "react";
 
-const QueriesList = ({ queries, onResultClick }) => {
+const QueriesList = ({ queries, deleteSelectedQuery }) => {
   console.log("result", queries);
   return (
     <ul>
       {queries.map((query) => (
-        <li key={query._id} onClick={() => onResultClick(query)}>
+        <li key={query._id} onClick={() => deleteSelectedQuery(query)}>
           <p>{query._id}</p>
           <p>{query.searchType}</p>
           {/* <p>{query.queryOptions}</p> */}
