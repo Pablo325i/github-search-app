@@ -6,11 +6,11 @@ const QueriesList = ({ queries, deleteSelectedQuery }) => {
     <ul>
       {queries.map((query) => (
         <li key={query._id} onClick={() => deleteSelectedQuery(query)}>
-          <p>{query._id}</p>
-          <p>{query.searchType}</p>
+          <p>ID: {query._id}</p>
+          <p>Tipo de busqueda: {query.searchType}</p>
           {/* <p>{query.queryOptions}</p> */}
           <p>{query.q}</p>
-          <p>{query.date}</p>
+          <p>Fecha: {query.date}</p>
         </li>
       ))}
     </ul>
