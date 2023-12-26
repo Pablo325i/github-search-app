@@ -1,15 +1,16 @@
 // src/components/SearchResults.js
 import React from "react";
-
+import { useState } from "react";
+import ResultItem from "./ResultItem";
 const ResultList = ({ results, onResultClick, onlyUsers }) => {
-  console.log("result", results);
   return (
     <ul>
       {results.map((result) => (
-        <li key={result.id} onClick={() => onResultClick(result)}>
-          {onlyUsers ? result.login : result.name} -{" "}
-          {onlyUsers ? result.id : result?.owner?.login}
-        </li>
+        <ResultItem
+          result={result}
+          onResultClick={onResultClick}
+          onlyUsers={onlyUsers}
+        />
       ))}
     </ul>
   );

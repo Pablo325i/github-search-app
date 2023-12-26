@@ -1,17 +1,12 @@
 import React from "react";
+import QueryItem from "./QueryItem";
 
 const QueriesList = ({ queries, deleteSelectedQuery }) => {
   console.log("result", queries);
   return (
     <ul>
       {queries.map((query) => (
-        <li key={query._id} onClick={() => deleteSelectedQuery(query)}>
-          <p>ID: {query._id}</p>
-          <p>Tipo de busqueda: {query.searchType}</p>
-          {/* <p>{query.queryOptions}</p> */}
-          <p>{query.q}</p>
-          <p>Fecha: {query.date}</p>
-        </li>
+        <QueryItem query={query} deleteSelectedQuery={deleteSelectedQuery} />
       ))}
     </ul>
   );
